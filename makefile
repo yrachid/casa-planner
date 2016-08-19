@@ -2,7 +2,7 @@
 VENV_NAME := .venv
 APP_NAME := casa-planner
 PACK_DESTINATION := ../pack
-PACK_NAME := casa_planner.tar
+PACK_NAME := casa_planner.zip
 
 pythonpath:
 	export PYTHONPATH=.
@@ -36,7 +36,7 @@ pack:clean
 	sh bin/pack.sh $(APP_NAME) $(PACK_DESTINATION) $(PACK_NAME)
 
 deploy:
-	sh bin/deploy.sh '$(PACK_DESTINATION)/$(PACK_NAME)'
+	sh bin/deploy.sh $(PACK_DESTINATION) $(PACK_NAME)
 
 migration init:pythonpath
 	alembic init migrations
