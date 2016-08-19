@@ -24,6 +24,7 @@ class BaseItem():
 
     preco = db.Column(db.Float())
     marca = db.Column(db.String())
+    modelo = db.Column(db.String())
 
     @declared_attr
     def loja_id(self):
