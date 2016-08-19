@@ -20,7 +20,7 @@ def from_env(env_var):
 class DefaultConfig():
     TESTING = False
     SECRET_KEY = 'CASA_PLANNER 123'
-    SQLALCHEMY_DATABASE_URI = from_env('SYRUP_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = from_env('CASAPLANNER_DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     RECREATE_DATABASE = False
 
@@ -28,7 +28,7 @@ class DefaultConfig():
 class DevelopmentConfig(DefaultConfig):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    RECREATE_DATABASE = True
+    RECREATE_DATABASE = False
 
 
 class TestConfig(DefaultConfig):

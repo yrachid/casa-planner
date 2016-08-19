@@ -1,14 +1,14 @@
-from . import db
+from . import db, Base
 
 
-class User(db.Model):
+class User(Base):
 
     __tablename__ = 'users'
 
     id = db.Column(db.Integer(), primary_key=True)
 
 
-class Role(db.Model):
+class Role(Base):
 
     __tablename__ = 'roles'
 

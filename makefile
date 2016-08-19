@@ -15,10 +15,14 @@ test-unit:
 test-functional:
 	$(VENV_NAME)/bin/pip3 install -r requirements/test.txt
 	export PYTHONPATH=. && $(VENV_NAME)/bin/py.test tests/functional
-setup-mac:
-	sh bin/setup.sh '.bash_profile'
-setup-linux:
-	sh bin/setup.sh '.bashrc'
+setup:
+	sh bin/setup.sh ".bash_profile"
 clean:
 	sh bin/clean.sh . '__pycache__'
 	sh bin/clean.sh tests '.cache'
+deploy:
+	sh bin/deploy.sh
+alembic init:
+	export PYTHONPATH=. && export FLASK_APP=main.py && alembic init migrations
+alembic migrate:
+	export PYTHONPATH=. && export FLASK_APP=main.py && sh bin/migrate.sh

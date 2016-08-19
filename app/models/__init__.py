@@ -1,10 +1,11 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.ext.declarative import declared_attr, declarative_base
 
 db = SQLAlchemy()
+Base = declarative_base()
 
 
-class Loja(db.Model):
+class Loja(Base):
 
     __tablename__ = 'lojas'
 
