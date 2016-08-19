@@ -3,4 +3,7 @@ from app.models import Loja
 
 
 class GeladeiraModelView(ModelView):
-    inline_models = (Loja,)
+    pass
+
+class FogaoModelView(ModelView):
+    pass
