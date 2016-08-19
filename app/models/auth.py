@@ -1,4 +1,5 @@
 from . import db, Base
+from sqlalchemy.ext.declarative import declared_attr
 
 
 class User(Base):
@@ -15,16 +16,16 @@ class Role(Base):
     id = db.Column(db.Integer(), primary_key=True)
 
 
-roles_users = db.Table(
-    'roles_users',
-    db.Column(
-        'user_id',
-        db.Integer(),
-        db.ForeignKey('users.id')
-    ),
-    db.Column(
-        'role_id',
-        db.Integer(),
-        db.ForeignKey('roles.id')
-    )
-)
+class RolesUsers(Base):
+
+    __tablename__ = 'roles_users'
+
+    id = db.Column(db.Integer(), primary_key=True)
+
+    @declared_attr
+    def user_id(self):
+        return db.Column(db.Integer(), db.ForeignKey('users.id'))
+
+    @declared_attr
+    def role_id(self):
+        return db.Column(db.Integer(), db.ForeignKey('roles.id'))
