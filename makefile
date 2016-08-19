@@ -36,7 +36,7 @@ pack:clean
 	sh bin/pack.sh $(APP_NAME) $(PACK_DESTINATION) $(PACK_NAME)
 
 deploy:
-	sh bin/deploy.sh
+	sh bin/deploy.sh '$(PACK_DESTINATION)/$(PACK_NAME)'
 
 migration init:pythonpath
 	alembic init migrations

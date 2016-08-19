@@ -6,4 +6,5 @@ PACK_NAME=$3
 
 rm -rf $PACK_DESTINATION
 mkdir -p $PACK_DESTINATION
-tar -cf "$PACK_DESTINATION/$PACK_NAME" .
+
+zip -r -x=*.venv* -x=*tests* -x=*readme.md* "$PACK_DESTINATION/$PACK_NAME" .
