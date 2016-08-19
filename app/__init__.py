@@ -4,7 +4,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
-from .models.geladeira import Geladeira
+from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .blueprints.error_handler import error_handler
 
 
@@ -51,6 +51,26 @@ def factory(config):
                 category='Eletrodomesticos',
                 name='Geladeiras',
                 endpoint='geladeiras'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                Fogao,
+                db.session,
+                category='Eletrodomesticos',
+                name='Fogões',
+                endpoint='fogoes'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                Microondas,
+                db.session,
+                category='Eletrodomesticos',
+                name='Microondas',
+                endpoint='microondas'
             )
         )
 
