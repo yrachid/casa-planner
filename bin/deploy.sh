@@ -16,4 +16,4 @@ ssh -i $DEPLOY_KEY $DEPLOY_USER@$DEPLOY_HOST "pip3 install -r ~/app/requirements
 ssh -i $DEPLOY_KEY root@$DEPLOY_HOST "rm -rf /var/www/html/*"
 ssh -i $DEPLOY_KEY root@$DEPLOY_HOST "cp /home/$DEPLOY_USER/app/etc/production/casaplanner.wsgi /var/www/html/"
 ssh -i $DEPLOY_KEY root@$DEPLOY_HOST "service apache2 restart"
-ssh -i $DEPLOY_KEY root@$DEPLOY_HOST "cd /home/$DEPLOY_USER/app && make migration apply"
+# ssh -i $DEPLOY_KEY root@$DEPLOY_HOST "cd /home/$DEPLOY_USER/app && make migration apply"
