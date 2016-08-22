@@ -22,7 +22,8 @@ class Loja(Base):
 
 class BaseItem():
 
-    preco = db.Column(db.Float())
+    preco_parcelado = db.Column(db.Float())
+    preco_a_vista = db.Column(db.Float())
     marca = db.Column(db.String())
     modelo = db.Column(db.String())
 
