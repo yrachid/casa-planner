@@ -5,6 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
+from .modelviews.eletrodomesticos import BaseItemModelView
 from .blueprints.error_handler import error_handler
 
 
@@ -45,7 +46,7 @@ def factory(config):
     with app.app_context():
 
         admin.add_view(
-            ModelView(
+            BaseItemModelView(
                 Geladeira,
                 db.session,
                 category='Eletrodomesticos',
@@ -55,7 +56,7 @@ def factory(config):
         )
 
         admin.add_view(
-            ModelView(
+            BaseItemModelView(
                 Fogao,
                 db.session,
                 category='Eletrodomesticos',
