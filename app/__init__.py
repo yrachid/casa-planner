@@ -66,7 +66,7 @@ def factory(config):
         )
 
         admin.add_view(
-            ModelView(
+            BaseItemModelView(
                 Microondas,
                 db.session,
                 category='Eletrodomesticos',
