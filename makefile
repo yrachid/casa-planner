@@ -5,13 +5,13 @@ PACK_DESTINATION := ../pack
 PACK_NAME := casa_planner.zip
 
 pythonpath:
-	export PYTHONPATH=.
+	export PYTHONPATH=. &&
 
-run dev:pythonpath
-	$(VENV_NAME)/bin/python3 main.py
+run dev:
+	export PYTHONPATH=. && $(VENV_NAME)/bin/python3 main.py
 
-run prod:pythonpath
-	export CASAPLANNER_CONFIG=DefaultConfig && $(VENV_NAME)/bin/python3 main.py
+run prod:
+	export PYTHONPATH=. && export CASAPLANNER_CONFIG=DefaultConfig && $(VENV_NAME)/bin/python3 main.py
 
 venv:
 	sh bin/venv.sh . $(VENV_NAME)
@@ -19,11 +19,11 @@ venv:
 install dev:
 	$(VENV_NAME)/bin/pip3 install -r requirements/development.txt
 
-test unit:pythonpath
-	sh bin/test.sh $(VENV_NAME) 'unit'
+test unit:
+	export PYTHONPATH=. && sh bin/test.sh $(VENV_NAME) 'unit'
 
-test functional:pythonpath
-	sh bin/test.sh $(VENV_NAME) 'functional'
+test functional:
+	export PYTHONPATH=. && sh bin/test.sh $(VENV_NAME) 'functional'
 
 setup:
 	sh bin/setup.sh ".bash_profile"
@@ -38,11 +38,11 @@ pack:clean
 deploy:
 	sh -x bin/deploy.sh $(PACK_DESTINATION) $(PACK_NAME)
 
-migration init:pythonpath
-	alembic init migrations
+migration init:
+	export PYTHONPATH=. && alembic init migrations
 
-migration create:pythonpath
-	sh bin/migrate.sh
+migration create:
+	export PYTHONPATH=. && sh bin/migrate.sh
 
-migration apply:pythonpath
-	alembic upgrade head
+migration apply:
+	export PYTHONPATH=. && alembic upgrade head
