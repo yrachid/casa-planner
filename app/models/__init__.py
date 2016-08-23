@@ -11,7 +11,6 @@ class Loja(Base):
 
     id = db.Column(db.Integer(), primary_key=True)
     nome = db.Column(db.String())
-    link = db.Column(db.String())
 
     def __repr__(self):
         return self.nome
@@ -26,6 +25,9 @@ class BaseItem():
     preco_a_vista = db.Column(db.Float())
     marca = db.Column(db.String())
     modelo = db.Column(db.String())
+    altura = db.Column(db.Float())
+    largura = db.Column(db.Float())
+    comprimento = db.Column(db.Float())
 
     @declared_attr
     def loja_id(self):
