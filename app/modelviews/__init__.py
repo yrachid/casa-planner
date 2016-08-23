@@ -5,6 +5,8 @@ from app.models import Loja
 
 class BaseItemModelView(ModelView):
 
+    can_view_details = True
+
     column_formatters = dict(
         link_loja=lambda c, v, m, p: Markup(
             "<a href='{}'> Ver na Loja </a>".format(m.link_loja)
@@ -16,9 +18,14 @@ class BaseItemModelView(ModelView):
 
 
 class ImovelModelView(ModelView):
+
+    can_view_details = True
+
+    column_exclude_list = ('visitado', 'aprovado', 'tem_garagem')
+
     column_formatters = dict(
         link=lambda c, v, m, p: Markup(
-            "<a href='{}'> Ver no site </a>".format(m.link_loja)
+            "<a href='{}'> Ver no site </a>".format(m.link)
         ),
-        capacidade=lambda c, v, m, p: '{} L'.format(m.capacidade)
+        tamanho=lambda c, v, m, p: '{} m'.format(m.tamanho)
     )
