@@ -5,7 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
-from .modelviews.eletrodomesticos import BaseItemModelView
+from .modelviews import BaseItemModelView
 from .blueprints.error_handler import error_handler
 
 
