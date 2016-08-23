@@ -13,3 +13,12 @@ class BaseItemModelView(ModelView):
     )
 
     column_exclude_list = ('altura', 'largura', 'comprimento')
+
+
+class ImovelModelView(ModelView):
+    column_formatters = dict(
+        link=lambda c, v, m, p: Markup(
+            "<a href='{}'> Ver no site </a>".format(m.link_loja)
+        ),
+        capacidade=lambda c, v, m, p: '{} L'.format(m.capacidade)
+    )

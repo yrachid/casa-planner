@@ -6,7 +6,7 @@ from .models import db, Loja
 from .models.auth import User, Role
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .models.imoveis import Imovel, Bairro
-from .modelviews import BaseItemModelView
+from .modelviews import BaseItemModelView, ImovelModelView
 from .blueprints.error_handler import error_handler
 
 
@@ -96,7 +96,7 @@ def factory(config):
         )
 
         admin.add_view(
-            ModelView(
+            ImovelModelView(
                 Imovel,
                 db.session,
                 category='Imoveis',
