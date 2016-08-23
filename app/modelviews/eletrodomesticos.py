@@ -4,16 +4,12 @@ from app.models import Loja
 
 
 class BaseItemModelView(ModelView):
+
     column_formatters = dict(
         link_loja=lambda c, v, m, p: Markup(
             "<a href='{}'> Ver na Loja </a>".format(m.link_loja)
-        )
+        ),
+        capacidade=lambda c, v, m, p: '{} L'.format(m.capacidade)
     )
 
-
-class GeladeiraModelView(ModelView):
-    pass
-
-
-class FogaoModelView(ModelView):
-    pass
+    column_exclude_list = ('altura', 'largura', 'comprimento')
