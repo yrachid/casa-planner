@@ -1,1 +1,1 @@
-web: pip install -r requirements/development.txt && make migration apply && make run dev
+web: alembic upgrade head && export PYTHONPATH=. && python3 main.py
