@@ -6,7 +6,10 @@ from .models import db, Loja
 from .models.auth import User, Role
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .models.imoveis import Imovel, Bairro, Imobiliaria
-from .modelviews import BaseItemModelView, ImovelModelView
+from .models.checklist import CheckListItem
+from .modelviews import BaseItemModelView
+from .modelviews.imovel import ImovelModelView
+from .modelviews.checklist import ChecklistModelView
 from .blueprints.error_handler import error_handler
 from .blueprints.restful import mobile_api
 
@@ -43,7 +46,14 @@ def factory(config):
         app,
         'Casa Planner',
         template_mode='bootstrap3',
-        url='/'
+        url='/',
+        index_view=ChecklistModelView(
+            CheckListItem,
+            db.session,
+            name='Checklist',
+            url='/',
+            endpoint='admin'
+        )
     )
 
     with app.app_context():
