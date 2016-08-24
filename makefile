@@ -4,22 +4,22 @@ APP_NAME := casa-planner
 PACK_DESTINATION := ../pack
 PACK_NAME := casa_planner.zip
 
-run dev:
+run:
 	export PYTHONPATH=. && $(VENV_NAME)/bin/python3 main.py
 
-run prod:
+run-prod:
 	export PYTHONPATH=. && export CASAPLANNER_CONFIG=DefaultConfig && $(VENV_NAME)/bin/python3 main.py
 
 venv:
 	sh bin/venv.sh . $(VENV_NAME)
 
-install dev:
+install-dev:
 	$(VENV_NAME)/bin/pip3 install -r requirements/development.txt
 
-test unit:
+test-unit:
 	export PYTHONPATH=. && sh bin/test.sh $(VENV_NAME) 'unit'
 
-test functional:
+test-functional:
 	export PYTHONPATH=. && sh bin/test.sh $(VENV_NAME) 'functional'
 
 setup:
@@ -35,11 +35,11 @@ pack:clean
 deploy:
 	sh -x bin/deploy.sh $(PACK_DESTINATION) $(PACK_NAME)
 
-migration init:
+migration-init:
 	export PYTHONPATH=. && alembic init migrations
 
-migration create:
+migration-create:
 	export PYTHONPATH=. && sh bin/migrate.sh
 
-migration apply:
+migration-apply:
 	export PYTHONPATH=. && alembic upgrade head
