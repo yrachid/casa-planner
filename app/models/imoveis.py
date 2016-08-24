@@ -33,3 +33,8 @@ class Imovel(Base):
     link = db.Column(db.String())
     visitado = db.Column(db.Boolean())
     aprovado = db.Column(db.Boolean())
+    andar = db.Column(db.Integer())
+    nota = db.Column(db.Integer())
+    codigo_imovel = db.Column(db.Integer())
+    sol = db.Column(db.String())
+    nivel_barulho = db.Column(db.Integer())
