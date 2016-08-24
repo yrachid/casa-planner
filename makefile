@@ -4,9 +4,6 @@ APP_NAME := casa-planner
 PACK_DESTINATION := ../pack
 PACK_NAME := casa_planner.zip
 
-pythonpath:
-	export PYTHONPATH=. &&
-
 run dev:
 	export PYTHONPATH=. && $(VENV_NAME)/bin/python3 main.py
 
