@@ -1,7 +1,9 @@
 from flask_admin.contrib.sqla import ModelView
-from flask import Markup
 from app.models import Loja
 from wtforms.fields import SelectField
+from .formatters import (
+    money_formatter, square_meters_formatter, link_formatter, liter_formatter
+)
 
 
 class BaseItemModelView(ModelView):
@@ -9,10 +11,11 @@ class BaseItemModelView(ModelView):
     can_view_details = True
 
     column_formatters = dict(
-        link_loja=lambda c, v, m, p: Markup(
-            "<a href='{}'> Ver na Loja </a>".format(m.link_loja)
-        ),
-        capacidade=lambda c, v, m, p: '{} L'.format(m.capacidade)
+        link_loja=lambda c, v, m, p: link_formatter(
+            m.link_loja, 'Ver na loja'),
+        capacidade=lambda c, v, m, p: liter_formatter(m.capacidade),
+        preco_a_vista=lambda c, v, m, p: money_formatter(m.preco_a_vista),
+        preco_parcelado=lambda c, v, m, p: money_formatter(m.preco_parcelado)
     )
 
     column_exclude_list = (
@@ -33,15 +36,9 @@ class ImovelModelView(ModelView):
     )
 
     column_formatters = dict(
-        link=lambda c, v, m, p: Markup(
-            "<a href='{}'> Ver no site </a>".format(m.link)
-        ),
-        tamanho=lambda c, v, m, p: '{}m²'.format(int(m.tamanho)),
-        valor_total=lambda c, v, m, p: 'R${}'.format(
-            str(
-                format(m.valor_total, '.2f')
-            ).replace('.', ',')
-        )
+        link=lambda c, v, m, p: link_formatter(m.link, 'Ver no site'),
+        tamanho=lambda c, v, m, p: square_meters_formatter(m.tamanho),
+        valor_total=lambda c, v, m, p: money_formatter(m.valor_total)
     )
 
     form_args = dict(
