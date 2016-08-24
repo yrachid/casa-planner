@@ -8,6 +8,7 @@ from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .models.imoveis import Imovel, Bairro, Imobiliaria
 from .modelviews import BaseItemModelView, ImovelModelView
 from .blueprints.error_handler import error_handler
+from .blueprints.restful import mobile_api
 
 
 def factory(config):
@@ -36,6 +37,7 @@ def factory(config):
             db.create_all()
 
     app.register_blueprint(error_handler)
+    app.register_blueprint(mobile_api)
 
     admin = Admin(
         app,
