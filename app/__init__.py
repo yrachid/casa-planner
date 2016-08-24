@@ -8,6 +8,7 @@ from .models.moveis import BalcaoCooktop, Sofa, GuardaRoupa
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .models.imoveis import Imovel, Bairro, Imobiliaria
 from .models.checklist import CheckListItem
+from .models.mercado import ItemDespensa, GrupoDespensa
 from .modelviews import BaseItemModelView
 from .modelviews.imovel import ImovelModelView
 from .modelviews.checklist import ChecklistModelView
@@ -155,6 +156,26 @@ def factory(config):
                 category='Imoveis',
                 name='Aluguel',
                 endpoint='alugueis'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                ItemDespensa,
+                db.session,
+                category='Despensa',
+                name='Itens',
+                endpoint='itens-despensa'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                GrupoDespensa,
+                db.session,
+                category='Despensa',
+                name='Grupos Despensa',
+                endpoint='grupos-despensa'
             )
         )
 

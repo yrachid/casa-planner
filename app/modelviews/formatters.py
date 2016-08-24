@@ -24,9 +24,9 @@ def centimeters_formatter(value):
 
 
 def link_formatter(url, text):
-    return Markup(
+    return '-' if url is None else Markup(
         "<a href='{}'> {} </a>".format(url, text)
-    ) if url is not None else ' - '
+    )
 
 
 def phone_formatter(value):
