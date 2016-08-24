@@ -43,6 +43,8 @@ class ImovelModelView(ModelView):
         valor_total=lambda c, v, m, p: money_formatter(m.valor_total)
     )
 
+    column_filters = ('visitado', 'aprovado', 'valor_total')
+
     form_args = dict(
         sol=dict(
             choices=[
