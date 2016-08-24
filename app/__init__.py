@@ -4,7 +4,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
-from .models.moveis import BalcaoCooktop
+from .models.moveis import BalcaoCooktop, Sofa, GuardaRoupa
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
 from .models.imoveis import Imovel, Bairro, Imobiliaria
 from .models.checklist import CheckListItem
@@ -96,6 +96,26 @@ def factory(config):
                 category='Moveis',
                 name='Balcão Cooktop',
                 endpoint='balcoes-cooktop'
+            )
+        )
+
+        admin.add_view(
+            BaseItemModelView(
+                GuardaRoupa,
+                db.session,
+                category='Moveis',
+                name='Guarda roupa',
+                endpoint='guardas-roupas'
+            )
+        )
+
+        admin.add_view(
+            BaseItemModelView(
+                Sofa,
+                db.session,
+                category='Moveis',
+                name='Sofás',
+                endpoint='sofas'
             )
         )
 
