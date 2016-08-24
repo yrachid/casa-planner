@@ -1,7 +1,7 @@
 from flask_admin.contrib.sqla import ModelView
 from wtforms.fields import SelectField
 from .formatters import (
-    money_formatter, square_meters_formatter, link_formatter
+    money_formatter, square_meters_formatter, link_formatter, phone_formatter
 )
 
 
@@ -22,7 +22,8 @@ class ImovelModelView(ModelView):
     column_formatters = dict(
         link=lambda c, v, m, p: link_formatter(m.link, 'Ver no site'),
         tamanho=lambda c, v, m, p: square_meters_formatter(m.tamanho),
-        valor_total=lambda c, v, m, p: money_formatter(m.valor_total)
+        valor_total=lambda c, v, m, p: money_formatter(m.valor_total),
+        telefone=lambda c, v, m, p: phone_formatter(m.telefone)
     )
 
     column_filters = ('visitado', 'aprovado', 'valor_total')
