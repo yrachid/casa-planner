@@ -10,6 +10,7 @@ class ImovelModelView(ModelView):
     can_view_details = True
 
     column_default_sort = ('nota', True)
+    column_sortable_list = ('valor_total', 'tamanho')
 
     column_exclude_list = (
         'visitado', 'aprovado', 'tem_garagem', 'andar', 'sol', 'nivel_barulho',
@@ -26,7 +27,10 @@ class ImovelModelView(ModelView):
         telefone=lambda c, v, m, p: phone_formatter(m.telefone)
     )
 
-    column_filters = ('visitado', 'aprovado', 'valor_total')
+    column_filters = (
+        'visitado', 'aprovado', 'valor_total', 'bairro.nome',
+        'imobiliaria.nome'
+    )
 
     form_args = dict(
         sol=dict(
