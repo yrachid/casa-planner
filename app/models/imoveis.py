@@ -1,4 +1,5 @@
 from . import db, Base
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Bairro(Base):
@@ -63,3 +64,12 @@ class Imovel(Base):
     linha_onibus = db.Column(db.String())
     imobiliaria_id = db.Column(db.Integer(), db.ForeignKey('imobiliarias.id'))
     imobiliaria = db.relationship('Imobiliaria')
+    mercado = db.Column(db.Boolean())
+    farmacia = db.Column(db.Boolean())
+    shopping = db.Column(db.Boolean())
+    posto_gasolina = db.Column(db.Boolean())
+    comentarios = db.Column(db.String())
+
+    @hybrid_property
+    def valor_total(self):
+        return self.valor_aluguel + self.valor_condominio + self.valor_iptu

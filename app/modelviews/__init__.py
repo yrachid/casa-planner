@@ -28,14 +28,20 @@ class ImovelModelView(ModelView):
         'visitado', 'aprovado', 'tem_garagem', 'andar', 'sol', 'nivel_barulho',
         'endereco', 'nota', 'chuveiro', 'tem_portaria', 'tem_elevador',
         'tem_salao_festas', 'parada_onibus', 'linha_onibus',
-        'numero_dormitorios'
+        'numero_dormitorios', 'mercado', 'shopping', 'farmacia', 'comentarios',
+        'posto_gasolina', 'valor_aluguel', 'valor_condominio', 'valor_iptu'
     )
 
     column_formatters = dict(
         link=lambda c, v, m, p: Markup(
             "<a href='{}'> Ver no site </a>".format(m.link)
         ),
-        tamanho=lambda c, v, m, p: '{} m'.format(m.tamanho)
+        tamanho=lambda c, v, m, p: '{}m²'.format(int(m.tamanho)),
+        valor_total=lambda c, v, m, p: 'R${}'.format(
+            str(
+                format(m.valor_total, '.2f')
+            ).replace('.', ',')
+        )
     )
 
     form_args = dict(
@@ -67,3 +73,10 @@ class ImovelModelView(ModelView):
         nivel_barulho=SelectField,
         chuveiro=SelectField
     )
+
+    def get_column_names(self, only_columns, excluded_columns):
+
+        columns = super().get_column_names(only_columns, excluded_columns)
+        columns.insert(1, ('valor_total', 'Valor Total'))
+
+        return columns
