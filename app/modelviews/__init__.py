@@ -27,7 +27,8 @@ class ImovelModelView(ModelView):
     column_exclude_list = (
         'visitado', 'aprovado', 'tem_garagem', 'andar', 'sol', 'nivel_barulho',
         'endereco', 'nota', 'chuveiro', 'tem_portaria', 'tem_elevador',
-        'tem_salao_festas'
+        'tem_salao_festas', 'parada_onibus', 'linha_onibus',
+        'numero_dormitorios'
     )
 
     column_formatters = dict(
@@ -53,7 +54,10 @@ class ImovelModelView(ModelView):
             coerce=int
         ),
         chuveiro=dict(
-            choices=[('Gás', 'Gás'), ('Elétrico', 'Elétrico')]
+            choices=[
+                ('N/A', 'Não Informado'), ('Gás', 'Gás'),
+                ('Elétrico', 'Elétrico')
+            ]
         )
     )
 

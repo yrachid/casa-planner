@@ -25,6 +25,12 @@ class Imobiliaria(Base):
     telefone = db.Column(db.Integer())
     link = db.Column(db.String())
 
+    def __repr__(self):
+        return self.nome
+
+    def __str__(self):
+        return self.nome
+
 
 class Imovel(Base):
 
@@ -54,6 +60,6 @@ class Imovel(Base):
     tem_salao_festas = db.Column(db.Boolean())
     telefone = db.Column(db.String())
     parada_onibus = db.Column(db.Boolean())
-    linha_onibus = db.Column(db.Boolean())
+    linha_onibus = db.Column(db.String())
     imobiliaria_id = db.Column(db.Integer(), db.ForeignKey('imobiliarias.id'))
     imobiliaria = db.relationship('Imobiliaria')

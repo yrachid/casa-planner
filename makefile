@@ -43,3 +43,6 @@ migration create:
 
 migration apply:
 	export PYTHONPATH=. && alembic upgrade head
+
+migration rollback:
+	export PYTHONPATH=. && alembic downgrade base
