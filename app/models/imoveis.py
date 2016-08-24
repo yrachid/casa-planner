@@ -38,3 +38,7 @@ class Imovel(Base):
     codigo_imovel = db.Column(db.Integer())
     sol = db.Column(db.String())
     nivel_barulho = db.Column(db.Integer())
+    chuveiro = db.Column(db.String())
+    tem_elevador = db.Column(db.Boolean())
+    tem_portaria = db.Column(db.Boolean())
+    tem_salao_festas = db.Column(db.Boolean())

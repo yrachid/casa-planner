@@ -26,7 +26,8 @@ class ImovelModelView(ModelView):
 
     column_exclude_list = (
         'visitado', 'aprovado', 'tem_garagem', 'andar', 'sol', 'nivel_barulho',
-        'endereco', 'nota'
+        'endereco', 'nota', 'chuveiro', 'tem_portaria', 'tem_elevador',
+        'tem_salao_festas'
     )
 
     column_formatters = dict(
@@ -38,7 +39,10 @@ class ImovelModelView(ModelView):
 
     form_args = dict(
         sol=dict(
-            choices=[('Leste', 'Leste'), ('Oeste', 'Oeste')]
+            choices=[
+                ('N/A', 'Não Informado'), ('Norte', 'Norte'),
+                ('Sul', 'Sul'), ('Leste', 'Leste'), ('Oeste', 'Oeste')
+            ]
         ),
         nota=dict(
             choices=[(x, str(x)) for x in range(0, 6)],
@@ -47,11 +51,15 @@ class ImovelModelView(ModelView):
         nivel_barulho=dict(
             choices=[(x, str(x)) for x in range(0, 6)],
             coerce=int
+        ),
+        chuveiro=dict(
+            choices=[('Gás', 'Gás'), ('Elétrico', 'Elétrico')]
         )
     )
 
     form_overrides = dict(
         sol=SelectField,
         nota=SelectField,
-        nivel_barulho=SelectField
+        nivel_barulho=SelectField,
+        chuveiro=SelectField
     )
