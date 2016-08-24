@@ -16,6 +16,16 @@ class Bairro(Base):
         return self.nome
 
 
+class Imobiliaria(Base):
+
+    __tablename__ = 'imobiliarias'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    nome = db.Column(db.String())
+    telefone = db.Column(db.Integer())
+    link = db.Column(db.String())
+
+
 class Imovel(Base):
 
     __tablename__ = 'imoveis'
@@ -42,3 +52,8 @@ class Imovel(Base):
     tem_elevador = db.Column(db.Boolean())
     tem_portaria = db.Column(db.Boolean())
     tem_salao_festas = db.Column(db.Boolean())
+    telefone = db.Column(db.String())
+    parada_onibus = db.Column(db.Boolean())
+    linha_onibus = db.Column(db.Boolean())
+    imobiliaria_id = db.Column(db.Integer(), db.ForeignKey('imobiliarias.id'))
+    imobiliaria = db.relationship('Imobiliaria')

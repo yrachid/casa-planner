@@ -5,7 +5,7 @@ from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
-from .models.imoveis import Imovel, Bairro
+from .models.imoveis import Imovel, Bairro, Imobiliaria
 from .modelviews import BaseItemModelView, ImovelModelView
 from .blueprints.error_handler import error_handler
 
@@ -92,6 +92,16 @@ def factory(config):
                 category='Imoveis',
                 name='Bairros',
                 endpoint='bairros'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                Imobiliaria,
+                db.session,
+                category='Imoveis',
+                name='Imobiliarias',
+                endpoint='imobiliarias'
             )
         )
 
