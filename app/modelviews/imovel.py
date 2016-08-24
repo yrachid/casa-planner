@@ -35,8 +35,9 @@ class ImovelModelView(ModelView):
     form_args = dict(
         sol=dict(
             choices=[
-                ('N/A', 'Não Informado'), ('Norte', 'Norte'),
-                ('Sul', 'Sul'), ('Leste', 'Leste'), ('Oeste', 'Oeste')
+                ('N/A', 'Não Informado'), ('Leste', 'Leste (Melhor)'),
+                ('Norte', 'Norte (2ª Melhor)'),
+                ('Oeste', 'Oeste (Mais quente)'), ('Sul', 'Sul (Mais fria)')
             ]
         ),
         nota=dict(
