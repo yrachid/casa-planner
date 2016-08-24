@@ -27,6 +27,8 @@ class ImovelModelView(ModelView):
 
     can_view_details = True
 
+    column_default_sort = ('nota', True)
+
     column_exclude_list = (
         'visitado', 'aprovado', 'tem_garagem', 'andar', 'sol', 'nivel_barulho',
         'endereco', 'nota', 'chuveiro', 'tem_portaria', 'tem_elevador',

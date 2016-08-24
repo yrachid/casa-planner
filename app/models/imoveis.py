@@ -72,4 +72,8 @@ class Imovel(Base):
 
     @hybrid_property
     def valor_total(self):
-        return self.valor_aluguel + self.valor_condominio + self.valor_iptu
+        aluguel = self.valor_aluguel or 0
+        condominio = self.valor_condominio or 0
+        iptu = self.valor_iptu or 0
+
+        return aluguel + condominio + iptu
