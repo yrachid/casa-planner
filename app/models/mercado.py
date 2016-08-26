@@ -34,3 +34,4 @@ class ItemDespensa(Base):
             name='ciclos_despensa'
         )
     )
+    unidade = db.Column(db.String())

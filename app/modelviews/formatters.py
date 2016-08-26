@@ -7,6 +7,11 @@ def _round_and_format_number(number_format, value):
     return number_format.format(value)
 
 
+def stock_unit(value, unit):
+    unit = unit if unit is not None else ''
+    return _round_and_format_number('{} ' + unit, value)
+
+
 def money_formatter(value):
     return _round_and_format_number('R${},00', value)
 

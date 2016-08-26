@@ -12,6 +12,7 @@ from .models.mercado import ItemDespensa, GrupoDespensa
 from .modelviews import BaseItemModelView
 from .modelviews.imovel import ImovelModelView
 from .modelviews.checklist import ChecklistModelView
+from .modelviews.mercado import ItemDespensaModelView
 from .blueprints.error_handler import error_handler
 from .blueprints.restful import mobile_api
 
@@ -160,7 +161,7 @@ def factory(config):
         )
 
         admin.add_view(
-            ModelView(
+            ItemDespensaModelView(
                 ItemDespensa,
                 db.session,
                 category='Despensa',
