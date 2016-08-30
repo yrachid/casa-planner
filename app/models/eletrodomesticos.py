@@ -24,3 +24,11 @@ class Microondas(Base, BaseItem):
 
     id = db.Column(db.Integer(), primary_key=True)
     capacidade = db.Column(db.Integer())
+
+
+class MaquinaDeLavar(Base, BaseItem):
+
+    __tablename__ = 'maquinas_de_lavar'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    capacidade = db.Column(db.Float())

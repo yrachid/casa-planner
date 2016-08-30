@@ -5,7 +5,9 @@ from flask_admin.contrib.sqla import ModelView
 from .models import db, Loja
 from .models.auth import User, Role
 from .models.moveis import BalcaoCooktop, Sofa, GuardaRoupa
-from .models.eletrodomesticos import Geladeira, Fogao, Microondas
+from .models.eletrodomesticos import (
+    Geladeira, Fogao, Microondas, MaquinaDeLavar
+)
 from .models.imoveis import Imovel, Bairro, Imobiliaria, Pergunta
 from .models.checklist import CheckListItem
 from .models.mercado import ItemDespensa, GrupoDespensa
@@ -88,6 +90,16 @@ def factory(config):
                 category='Eletrodomesticos',
                 name='Microondas',
                 endpoint='microondas'
+            )
+        )
+
+        admin.add_view(
+            BaseItemModelView(
+                MaquinaDeLavar,
+                db.session,
+                category='Eletrodomesticos',
+                name='Máquinas de lavar',
+                endpoint='maquinas-de-lavar'
             )
         )
 
