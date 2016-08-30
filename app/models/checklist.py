@@ -3,7 +3,7 @@ from . import db, Base
 
 categories = [
     'Eletrodomestico', 'Móvel', 'Cozinha', 'Banheiro', 'Eletrônico',
-    'Decoração', 'Quarto', 'Sala'
+    'Decoração', 'Quarto', 'Sala', 'Lazer'
 ]
 
 priorities = [
