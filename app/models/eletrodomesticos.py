@@ -16,6 +16,17 @@ class Fogao(Base, BaseItem):
 
     id = db.Column(db.Integer(), primary_key=True)
     numero_bocas = db.Column(db.Integer())
+    tipo = db.Column(
+        db.Enum(
+            'N/A',
+            'Piso',
+            'Embutível',
+            'Cooktop à Gás',
+            'Cooktop Elétrico',
+            'Cooktop por Indução',
+            name='tipos_fogao'
+        )
+    )
 
 
 class Microondas(Base, BaseItem):

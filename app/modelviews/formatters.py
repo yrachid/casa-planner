@@ -30,7 +30,7 @@ def centimeters_formatter(value):
 
 def link_formatter(url, text):
     return '-' if url is None else Markup(
-        "<a href='{}'> {} </a>".format(url, text)
+        "<a href='{}' target='_blank'> {} </a>".format(url, text)
     )
 
 
