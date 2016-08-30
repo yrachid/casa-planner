@@ -24,6 +24,10 @@ def liter_formatter(value):
     return _round_and_format_number('{}L', value)
 
 
+def kilo_formatter(value):
+    return _round_and_format_number('{}Kg', value)
+
+
 def centimeters_formatter(value):
     return _round_and_format_number('{}cm', value)
 

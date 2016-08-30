@@ -1,11 +1,23 @@
 from flask_admin.contrib.sqla import ModelView
 from wtforms.fields import SelectField
-from ..models.checklist import categories, priorities
+from flask_admin.contrib.sqla.filters import FilterEqual
+from ..models.checklist import categories, priorities, CheckListItem
 
 
 class ChecklistModelView(ModelView):
 
-    column_filters = ('finalizado', )
+    column_filters = (
+        'finalizado',
+        FilterEqual(
+            column=CheckListItem.categoria,
+            name='Categoria',
+            options=[
+                (c, c) for c in categories
+            ]
+        )
+    )
+
+    page_size = 50
 
     form_args = dict(
         categoria=dict(
