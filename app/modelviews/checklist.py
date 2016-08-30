@@ -7,6 +7,7 @@ from ..models.checklist import categories, priorities, CheckListItem
 class ChecklistModelView(ModelView):
 
     column_filters = (
+        'nome',
         'finalizado',
         FilterEqual(
             column=CheckListItem.categoria,
