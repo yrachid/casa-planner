@@ -6,7 +6,7 @@ from .models import db, Loja
 from .models.auth import User, Role
 from .models.moveis import BalcaoCooktop, Sofa, GuardaRoupa
 from .models.eletrodomesticos import Geladeira, Fogao, Microondas
-from .models.imoveis import Imovel, Bairro, Imobiliaria
+from .models.imoveis import Imovel, Bairro, Imobiliaria, Pergunta
 from .models.checklist import CheckListItem
 from .models.mercado import ItemDespensa, GrupoDespensa
 from .modelviews import BaseItemModelView
@@ -157,6 +157,16 @@ def factory(config):
                 category='Imoveis',
                 name='Aluguel',
                 endpoint='alugueis'
+            )
+        )
+
+        admin.add_view(
+            ModelView(
+                Pergunta,
+                db.session,
+                category='Imoveis',
+                name='Perguntas',
+                endpoint='perguntas'
             )
         )
 
