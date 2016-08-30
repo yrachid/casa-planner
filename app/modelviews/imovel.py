@@ -29,7 +29,7 @@ class ImovelModelView(ModelView):
 
     column_filters = (
         'visitado', 'aprovado', 'valor_total', 'bairro.nome',
-        'imobiliaria.nome'
+        'imobiliaria.nome', 'codigo_imovel'
     )
 
     form_args = dict(
