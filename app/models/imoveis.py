@@ -2,6 +2,15 @@ from . import db, Base
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
+class Pergunta(Base):
+
+    __tablename__ = 'perguntas'
+
+    id = db.Column(db.Integer(), primary_key=True)
+    enunciado = db.Column(db.String())
+    resposta = db.Column(db.String())
+
+
 class Bairro(Base):
 
     __tablename__ = 'bairros'
