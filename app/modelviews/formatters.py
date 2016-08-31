@@ -39,5 +39,8 @@ def link_formatter(url, text):
 
 
 def phone_formatter(value):
+    if value is None:
+        return '-'
+
     value = value.replace('.', '').replace('-', '')
-    return value[:4] + '-' + value[4:] if value is not None else '-'
+    return value[:4] + '-' + value[4:]
